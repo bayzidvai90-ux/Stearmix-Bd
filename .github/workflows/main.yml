@@ -36,6 +36,8 @@ jobs:
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
 
       - name: Build Debug APK
+        env:
+          STREAMIX_ADMIN_PASSWORD: ${{ secrets.STREAMIX_ADMIN_PASSWORD }}
         run: |
           cd "$PROJECT_DIR"
           gradle assembleDebug --no-daemon
@@ -44,4 +46,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Steamix-Bd-APK
-          path: '**/build/outputs/apk/debug/*.apk'
+          path: '**/build/outputs/apk/debug/*.apk't
